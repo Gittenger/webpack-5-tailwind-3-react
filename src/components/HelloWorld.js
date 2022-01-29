@@ -2,6 +2,7 @@ import React from 'react'
 import Github from './github.svg?react'
 import Bike from './bike.jpeg'
 import AngularSrc from './angular.svg'
+import styles from './Hello.module.css'
 
 const HelloWorld = () => {
 	return (
@@ -30,6 +31,13 @@ const HelloWorld = () => {
 			</div>
 			<img className="w-[40px] h-[40px]" src={AngularSrc} alt="" />
 			<img className="w-24" src={Bike} alt="" />
+			<div>
+				<h1 className="text-4xl text-red-600">Hello -- Not modules</h1>
+				<div className={styles.module}>
+					<h1>Hello</h1>
+					<p>Nested</p>
+				</div>
+			</div>
 			<Github />
 		</div>
 	)

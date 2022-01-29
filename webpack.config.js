@@ -2,6 +2,35 @@ const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
+const CSSModuleLoader = {
+	loader: 'css-loader',
+	options: {
+		modules: {
+			localIdentName: '[name]__[local]___[hash:base64:5]',
+			exportLocalsConvention: 'camelCase',
+		},
+		importLoaders: 2,
+		sourceMap: false, // turned off as causes delay
+	},
+}
+
+const CSSLoader = {
+	loader: 'css-loader',
+	options: {
+		modules: 'global',
+		importLoaders: 2,
+		sourceMap: false, // turned off as causes delay
+	},
+}
+
+// Our PostCSSLoader
+const PostCSSLoader = {
+	loader: 'postcss-loader',
+	options: {
+		sourceMap: false, // turned off as causes delay
+	},
+}
+
 module.exports = {
 	entry: './src/index.js',
 	output: {
@@ -28,19 +57,12 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				exclude: /node_modules/,
-				use: [
-					MiniCssExtractPlugin.loader,
-					{
-						loader: 'css-loader',
-						options: {
-							importLoaders: 1,
-						},
-					},
-					{
-						loader: 'postcss-loader',
-					},
-				],
+				include: path.resolve(__dirname, 'src/index.css'),
+				use: [MiniCssExtractPlugin.loader, CSSLoader, PostCSSLoader],
+			},
+			{
+				test: /\.module\.css$/,
+				use: ['style-loader', CSSModuleLoader, PostCSSLoader],
 			},
 			{
 				test: /\.svg$/i,
