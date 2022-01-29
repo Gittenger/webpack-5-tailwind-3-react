@@ -78,6 +78,10 @@ module.exports = {
 				],
 			},
 			{
+				test: /\.(woff(2)?|ttf|eot)$/,
+				type: 'asset/resource',
+			},
+			{
 				test: /\.(png|jpe?g|gif|ico)$/i,
 				type: 'asset/resource',
 			},
