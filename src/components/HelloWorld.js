@@ -33,7 +33,7 @@ const HelloWorld = () => {
 			<img className="w-24" src={Bike} alt="" />
 			<div>
 				<h1 className="text-4xl text-red-600 font-body">Hello -- Not modules</h1>
-				<div className={styles.module}>
+				<div className={styles.className}>
 					<h1>Hello</h1>
 					<p>Nested</p>
 				</div>

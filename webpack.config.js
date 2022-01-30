@@ -6,11 +6,18 @@ const CSSModuleLoader = {
 	loader: 'css-loader',
 	options: {
 		modules: {
-			localIdentName: '[name]__[local]___[hash:base64:5]',
-			exportLocalsConvention: 'camelCase',
+			localIdentContext: path.resolve(__dirname, 'src'),
+			getLocalIdent: (
+				{ resourcePath },
+				localIdentName,
+				localName,
+				{ context }
+			) => {
+				let result = resourcePath.replace(context, '').slice(1).replace('/', '-')
+				return `${result.slice(0, result.indexOf('.'))}__${localName}`
+			},
 		},
-		importLoaders: 2,
-		sourceMap: false, // turned off as causes delay
+		importLoaders: 1,
 	},
 }
 
@@ -18,17 +25,14 @@ const CSSLoader = {
 	loader: 'css-loader',
 	options: {
 		modules: 'global',
-		importLoaders: 2,
-		sourceMap: false, // turned off as causes delay
+		importLoaders: 1,
 	},
 }
 
 // Our PostCSSLoader
 const PostCSSLoader = {
 	loader: 'postcss-loader',
-	options: {
-		sourceMap: false, // turned off as causes delay
-	},
+	options: {},
 }
 
 module.exports = {
@@ -39,7 +43,9 @@ module.exports = {
 	},
 	devServer: {
 		port: 3030,
+		static: path.join(__dirname, 'public'),
 	},
+	devtool: 'source-map',
 	resolve: {
 		modules: [path.join(__dirname, 'src'), 'node_modules'],
 		alias: {
@@ -62,7 +68,7 @@ module.exports = {
 			},
 			{
 				test: /\.module\.css$/,
-				use: ['style-loader', CSSModuleLoader, PostCSSLoader],
+				use: [MiniCssExtractPlugin.loader, CSSModuleLoader, PostCSSLoader],
 			},
 			{
 				test: /\.svg$/i,
@@ -89,11 +95,10 @@ module.exports = {
 	},
 	plugins: [
 		new MiniCssExtractPlugin({
-			filename: 'index.css',
-			chunkFilename: 'index.css',
+			filename: 'main.css',
 		}),
 		new HtmlWebPackPlugin({
-			template: './src/index.html',
+			template: './public/index.html',
 		}),
 	],
 }
