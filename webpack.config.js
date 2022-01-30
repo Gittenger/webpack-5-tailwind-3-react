@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 const CSSModuleLoader = {
 	loader: 'css-loader',
@@ -99,6 +100,14 @@ module.exports = {
 		}),
 		new HtmlWebPackPlugin({
 			template: './public/index.html',
+		}),
+		new CopyPlugin({
+			patterns: [
+				{
+					from: path.resolve(__dirname, 'public/assets'),
+					to: path.resolve(__dirname, 'build/assets'),
+				},
+			],
 		}),
 	],
 }
