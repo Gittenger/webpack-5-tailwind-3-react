@@ -27,19 +27,35 @@ const AppRoutes = () => {
         <Route path="/login" exact element={<LoginPage />} />
         <Route path="/portfolio" exact element={<PortfolioPage />} />
         <Route path="/contact" exact element={<ContactPage />} />
-        {/* <Route path="/admin" exact>
-          <AdminRoute>
-            <AdminDashboard />
-          </AdminRoute>
-        </Route> */}
-        {/* <AdminRoute path="/upload-images" exact component={UploadImage} />
-        <AdminRoute path="/delete-images" exact component={DeleteImage} />
-        <AdminRoute path="/forgot-password" exact component={ForgotPassword} />
-        <AdminRoute path="/change-password" exact component={ChangePassword} />
-        <AdminRoute
+        {/* <Route
+          path="/admin"
+          exact
+          element={<AdminRoute component={AdminDashboard} />}
+        />
+        <Route
+          path="/upload-images"
+          exact
+          element={<AdminRoute component={UploadImage} />}
+        />
+        <Route
+          path="/delete-images"
+          exact
+          element={<AdminRoute component={DeleteImage} />}
+        />
+        <Route
+          path="/forgot-password"
+          exact
+          element={<AdminRoute component={ForgotPassword} />}
+        />
+        <Route
+          path="/change-password"
+          exact
+          element={<AdminRoute component={ChangePassword} />}
+        />
+        <Route
           path="/reset-password/:token"
           exact
-          component={ResetPassword}
+          element={<AdminRoute component={ResetPassword} />}
         /> */}
       </Routes>
     </BrowserRouter>
