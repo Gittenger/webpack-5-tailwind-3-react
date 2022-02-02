@@ -1,14 +1,14 @@
 module.exports = {
-	content: ['./src/**/*.{html,js}', './public/index.html'],
-	theme: {
-		extend: {
-			fontFamily: {
-				body: ['Ubuntu'],
-			},
-		},
-	},
-	variants: {
-		extend: {},
-	},
-	plugins: [],
-}
+  content: ['./src/**/*.{html,js}', './public/index.html'],
+  theme: {
+    extend: {
+      fontFamily: {
+        body: ['Georama'],
+      },
+    },
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [],
+};

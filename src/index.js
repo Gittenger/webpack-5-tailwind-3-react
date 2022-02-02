@@ -1,7 +1,15 @@
 import React from 'react'
-import { render } from 'react-dom'
+import ReactDOM from 'react-dom'
+
+import App from './App'
 import './index.css'
+import PageProvider from './contexts/PageProvider.jsx'
 
-import HelloWorld from './components/HelloWorld'
-
-render(<HelloWorld />, document.getElementById('root'))
+ReactDOM.render(
+	<React.StrictMode>
+		<PageProvider>
+			<App />
+		</PageProvider>
+	</React.StrictMode>,
+	document.getElementById('root')
+)
