@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-import NavList from './NavList.component';
+import NavList from './NavList.component'
 
-const NavMobile = ({ showNavList }) => {
+const NavMobile = () => {
   return (
-    <div className={showNavList ? 'show' : 'hide'}>
+    <nav>
       <NavList />
-    </div>
-  );
-};
+    </nav>
+  )
+}
 
-export default NavMobile;
+export default NavMobile
