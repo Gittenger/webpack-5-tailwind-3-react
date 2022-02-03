@@ -14,7 +14,7 @@ const Footer = () => {
       <div>&copy; 2021 My Website</div>
       <ul className="flex justify-center items-center space-x-4 mt-5 mb-6">
         <li>
-          <a href={`mailto:${process.env.MAIN_EMAIL}`}>
+          <a href={`mailto:${process.env.EMAIL}`}>
             <EmailImg />
           </a>
         </li>
