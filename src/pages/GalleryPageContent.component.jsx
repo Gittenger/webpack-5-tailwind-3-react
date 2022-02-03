@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import 'react-gallery-carousel/dist/index.css'
-import Carousel from 'react-gallery-carousel'
-import styles from './styles/GalleryPage.module.css'
 
 import LocalImages from '../assets/img/img-index.js'
+import CIndex from '../components/components.index.js'
 
 const Gallery = () => {
   const [images, setImages] = useState([])
+  const { StyledCarousel } = CIndex
 
   const {
     img: { ImgOne, ImgTwo, ImgTnree },
@@ -40,15 +39,7 @@ const Gallery = () => {
 
   return (
     <main className="flex flex-col items-center justify-start pb-10">
-      <div className={`${styles.carousel}`}>
-        <Carousel
-          images={images}
-          isAutoPlaying={true}
-          hasIndexBoard={false}
-          hasThumbnailsAtMax={false}
-          hasThumbnails={true}
-        />
-      </div>
+      <StyledCarousel images={images} />
     </main>
   )
 }
