@@ -1,15 +1,11 @@
-import HomePageContent from './HomePageContent.component.jsx';
-import PortfolioPageContent from './PortfolioPageContent.component.jsx';
-import LoginPageContent from './LoginPageContent.component.jsx';
-import ContactPageContent from './ContactPageContent.component.jsx';
+import HomePageContent from './HomePageContent.component.jsx'
+import GalleryPageContent from './GalleryPageContent.component.jsx'
 
-import getPage from './PageComponent.jsx';
+import getPage from '../utils/getPage.js'
 
 const pages = {
   HomePage: getPage('Home', HomePageContent),
-  PortfolioPage: getPage('Portfolio', PortfolioPageContent),
-  LoginPage: getPage('Login', LoginPageContent),
-  ContactPage: getPage('Contact', ContactPageContent),
-};
+  GalleryPage: getPage('Gallery', GalleryPageContent),
+}
 
-export const { HomePage, PortfolioPage, LoginPage, ContactPage } = pages;
+export const { HomePage, GalleryPage } = pages
