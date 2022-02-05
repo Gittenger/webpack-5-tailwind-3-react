@@ -1,8 +1,8 @@
-const path = require('path');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
-const DotenvPlugin = require('dotenv-webpack');
+const path = require('path')
+const HtmlWebPackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
+const DotenvPlugin = require('dotenv-webpack')
 
 const CSSModuleLoader = {
   loader: 'css-loader',
@@ -18,13 +18,13 @@ const CSSModuleLoader = {
         let result = resourcePath
           .replace(context, '')
           .slice(1)
-          .replace('/', '-');
-        return `${result.slice(0, result.indexOf('.'))}__${localName}`;
+          .replace('/', '-')
+        return `${result.slice(0, result.indexOf('.'))}__${localName}`
       },
     },
     importLoaders: 1,
   },
-};
+}
 
 const CSSLoader = {
   loader: 'css-loader',
@@ -32,13 +32,13 @@ const CSSLoader = {
     modules: 'global',
     importLoaders: 1,
   },
-};
+}
 
 // Our PostCSSLoader
 const PostCSSLoader = {
   loader: 'postcss-loader',
   options: {},
-};
+}
 
 module.exports = {
   entry: './src/index.js',
@@ -47,7 +47,7 @@ module.exports = {
     filename: 'bundle.js',
   },
   devServer: {
-    port: 3030,
+    port: 4000,
     static: path.join(__dirname, 'public'),
     historyApiFallback: true,
   },
@@ -122,4 +122,4 @@ module.exports = {
       ],
     }),
   ],
-};
+}
